@@ -1,26 +1,664 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>안녕하세요! 👋</title>
+  <title>이룸법률사무소</title>
+
+  <link rel="preconnect" href="https://fastly.jsdelivr.net" crossorigin>
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/main1.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/self6-1.png">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/self6-2.png">
+
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Malgun Gothic,sans-serif;margin:0;padding:40px;line-height:1.6}
-    .wrap{max-width:800px;margin:0 auto}
-    h1{font-size:2rem;margin-bottom:0.5rem}
-    nav a{margin-right:12px}
-    footer{margin-top:40px;opacity:.7;font-size:.9rem}
+  @font-face{font-family:'Pretendard';font-weight:400;font-style:normal;src:url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');font-display:swap}
+  @font-face{font-family:'TAEBAEKfont';font-weight:700;font-style:normal;src:url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/TAEBAEKfont.woff2') format('woff2');font-display:swap}
+  @font-face{font-family:'GmarketSansMedium';font-weight:500;font-style:normal;src:url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');font-display:swap}
+  @font-face{font-family:'GmarketSansBold';font-weight:700;font-style:normal;src:url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');font-display:swap}
+
+  :root{--grad-start:#36DA9C;--grad-end:#209FE9;--nav-h:68px;--sticky-h:64px;--gap:22px;--ink:#0b1220;--hero-top-gap:clamp(140px,24vh,320px)}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-ms-overflow-style:none;scrollbar-width:none}
+  html::-webkit-scrollbar{width:0;height:0}
+  body{margin:0;font-family:'Pretendard',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;color:#0f172a;background:linear-gradient(135deg,var(--grad-start),var(--grad-end));overflow-x:hidden}
+  body.noscroll{overflow:hidden;height:100dvh}
+  img{max-width:100%;height:auto;display:block}
+  .sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+  :focus-visible{outline:3px solid #0ea5e9;outline-offset:2px;border-radius:8px}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+  .nav{position:fixed;inset:0 0 auto 0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:50;background:rgba(10,16,28,.2);backdrop-filter:saturate(120%) blur(12px);border-bottom:1.5px solid rgba(255,255,255,.5)}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700}
+  .brand__logoimg{height:clamp(36px,6vw,56px);width:auto}
+  .menu{display:flex;gap:28px;align-items:center}
+  .menu a{position:relative;color:rgba(255,255,255,.92);text-decoration:none;font-size:16px;padding:8px 2px;transition:color .2s ease}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:0;background:linear-gradient(0deg,var(--grad-start),var(--grad-end));transition:width .25s ease}
+  .menu a:hover::after,.menu a.active::after{width:100%}
+  .menu a:hover,.menu a.active{background:linear-gradient(0deg,var(--grad-start),var(--grad-end));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .menu-toggle{display:none;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);cursor:pointer}
+  .menu-toggle span{position:relative;display:block;width:18px;height:2px;background:#fff}
+  .menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:#fff}
+  .menu-toggle span::before{top:-6px}.menu-toggle span::after{top:6px}
+
+  @media (max-width:1024px){
+    .menu-toggle{display:flex}
+    .menu{position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:10px;padding:14px 16px 18px;background:rgba(10,16,28,.88);backdrop-filter:blur(10px) saturate(110%);border-bottom:1px solid rgba(255,255,255,.15);opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .2s ease,transform .2s ease}
+    .menu.on{opacity:1;pointer-events:auto;transform:translateY(0)}
+    .menu a{padding:12px 4px;font-size:15px;color:rgba(255,255,255,.98)}
+  }
+
+  .hero{position:relative;isolation:isolate;min-height:100svh;margin-top:0}
+  .slides{position:absolute;inset:0;overflow:hidden}
+  .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease;transform:scale(1.02)}
+  .slide.active{opacity:1}
+
+  .hero__content{position:relative;z-index:6;height:100%;display:grid;align-items:center;justify-items:start;padding-inline:16px;padding-top:calc(var(--nav-h) + var(--hero-top-gap));padding-bottom:clamp(12px,6vh,36px);color:#fff}
+  .content-left{margin-left:clamp(16px,8vw,260px);max-width:860px}
+  .hero__title{font-family:'TAEBAEKfont',serif;font-size:clamp(24px,5.8vw,44px);line-height:1.1;margin:0 0 10px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+  .hero__desc{font-family:'GmarketSansMedium',sans-serif;font-weight:500;font-size:clamp(16px,3.6vw,34px);opacity:.98;margin:0 0 22px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+  .hero__desc strong{font-size:120%}
+  .hero__metrics{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:6px;color:#fff;font-weight:800;font-size:clamp(13px,1.6vw,18px);text-shadow:0 2px 10px rgba(0,0,0,.35)}
+  .pill-btn{display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;padding:10px 22px;border-radius:999px;font-weight:700;font-size:16px}
+  .pill-btn--gradient{background:linear-gradient(135deg,var(--grad-start),var(--grad-end));color:#fff;box-shadow:0 8px 24px rgba(32,159,233,.35)}
+  #goConsult{position:absolute;left:clamp(16px,8vw,260px);bottom:calc(var(--sticky-h) + env(safe-area-inset-bottom, 0px) + 10px);z-index:8}
+
+  .hero-check{position:absolute;right:clamp(16px,6vw,90px);top:calc(52% + 4vh);transform:translateY(-44%);z-index:7;width:min(420px,30vw);max-width:460px;background:#fff;border:1px solid #e6edf5;border-radius:16px;box-shadow:0 18px 44px rgba(12,27,57,.12);padding:18px}
+
+  #hcheck{padding:18px 16px 16px}
+  #hcheck .hc-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  #hcheck .hc-stepbar{flex:1;height:6px;background:#eef4ff;border-radius:999px;overflow:hidden}
+  #hcheck .hc-stepbar i{display:block;height:100%;background:linear-gradient(90deg,#31d3a0,#209fe9);width:0%}
+  #hcheck .hc-no{font-weight:900;color:#0b2239}
+  #hcheck .hc-cat{font-weight:900;color:#13b981}
+  #hcheck .hc-body{display:grid;gap:10px}
+  #hcheck .hc-q{margin:6px 2px 10px;font-size:18px;color:#0b2239;font-weight:800}
+  #hcheck .hc-hint{margin:-4px 2px 8px;color:#6b7280;font-size:12px}
+  .hc-list{display:grid;gap:10px}
+  .hc-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;border:2px solid #dbe7ff;background:#fff;border-radius:14px;padding:12px 14px;cursor:pointer;transition:border-color .15s ease,box-shadow .15s ease,background .15s ease}
+  .hc-row:hover{border-color:#9ec8ff;background:linear-gradient(0deg,#f9fbff,#fff)}
+  .hc-row .txt{font-weight:900;color:#0f172a;text-align:left}
+  .hc-row .dot{width:22px;height:22px;border-radius:999px;border:2px solid #9ec8ff;flex:0 0 22px;display:grid;place-items:center;transition:.15s ease}
+  .hc-row .dot::after{content:"";width:12px;height:12px;border-radius:999px;background:transparent;transition:.15s ease}
+  .hc-row.is-on{border-color:#2b8cff;box-shadow:0 0 0 3px rgba(43,140,255,.12) inset}
+  .hc-row.is-on .dot{border-color:#2b8cff;background:#eaf3ff}
+  .hc-row.is-on .dot::after{background:linear-gradient(135deg,#31d3a0,#209fe9)}
+  #hcheck .hc-ctls{display:flex;justify-content:space-between;gap:10px;margin-top:12px}
+  #hcheck .hc-prev,#hcheck .hc-next{border:1px solid #d7e2f1;border-radius:999px;padding:10px 16px;font-weight:900;cursor:pointer}
+  #hcheck .hc-prev[disabled]{opacity:.45;cursor:not-allowed}
+  #hcheck .hc-next{background:linear-gradient(90deg,var(--grad-start),var(--grad-end));color:#fff;border-color:transparent;box-shadow:0 10px 20px rgba(32,159,233,.2)}
+  #hcheck .hc-next:hover{transform:translateY(-1px)}
+  .hc-form{display:grid;gap:10px}
+  .hc-input{border:2px solid #9ec8ff;border-radius:12px;padding:10px 12px;font-size:14px;outline:none}
+  .hc-agree{display:flex;align-items:center;gap:8px;font-size:12px;color:#334155}
+
+  @media (max-width:1024px){.hero-check{display:none!important}}
+  @media (max-width:768px){
+    .brand__logoimg{height:44px}
+    .nav{padding:0 12px}
+    .content-left{margin-left:18px;max-width:92%}
+    .hero__desc{margin-bottom:18px}
+  }
+  @media (max-width:430px){
+    :root{--nav-h:56px;--sticky-h:60px;--hero-top-gap:clamp(110px,20vh,200px)}
+    .content-left{margin-left:16px;max-width:94%}
+  }
+  @media (max-width:360px){
+    :root{--nav-h:56px;--sticky-h:56px;--hero-top-gap:clamp(90px,18vh,160px)}
+    .brand__logoimg{height:34px}
+    .content-left{margin-left:12px;max-width:94%}
+    .hero__desc{margin-bottom:14px}
+  }
+
+  .strengths{position:relative;z-index:1;background:#F6FAFF;padding:80px 16px 120px}
+  .strengths .container{width:min(1100px,100%);margin:0 auto}
+  .section-title{margin:0;text-align:center;font-family:'TAEBAEKfont';color:#0b2239;font-size:48px}
+  .section-accent{width:128px;height:8px;border-radius:999px;margin:16px auto 14px;background:linear-gradient(135deg,var(--grad-start),var(--grad-end))}
+  .section-sub{margin:0 auto 36px;text-align:center;font-family:'GmarketSansMedium';color:#5b677a;font-size:34px}
+  .cards{display:grid;grid-template-columns:repeat(2,clamp(300px,36vw,480px));justify-content:center;gap:28px 32px}
+  @media (max-width:920px){.cards{grid-template-columns:1fr}}
+  .card{display:flex;align-items:center;gap:18px;background:#fff;border-radius:18px;padding:24px;border:1px solid rgba(15,23,42,.06);box-shadow:0 10px 24px rgba(0,0,0,.06);min-height:148px}
+  .card__img{width:96px;height:96px;border-radius:16px;object-fit:contain;flex:0 0 96px;background:#eef5ff}
+  .card h3{margin:0 0 6px;font-weight:900;color:#0b2239}
+  .card p{margin:0;color:#3b475a;line-height:1.45;font-size:16px}
+
+  .cases{background:transparent;padding:80px 16px 48px}
+  .cases .container{width:min(1100px,100%);margin:0 auto;position:relative;padding-inline:16px}
+  .cases .title{margin:0;text-align:center;font-family:'TAEBAEKfont';color:#0b0f16;font-size:48px}
+  .cases .accent{width:140px;height:8px;border-radius:999px;background:linear-gradient(135deg,#36DA9C,#209FE9);margin:16px auto 10px;opacity:.95}
+  .cases .sub{text-align:center;margin:0 0 22px;color:#0b0f16;font-family:'GmarketSansMedium';opacity:.95;font-size:26px}
+  .case-swiper{position:relative;margin-top:86px;padding-top:84px}
+  .case-viewport{overflow:hidden;max-width:980px;margin:0 auto;padding-inline:18px;touch-action:pan-y}
+  .case-track{--spv:3;--gap:18px;display:flex;gap:var(--gap);will-change:transform}
+  .case-slide{position:relative;flex:0 0 calc((100% - var(--gap)*(var(--spv) - 1))/var(--spv))}
+  .case-card{position:relative;border-radius:18px;overflow:hidden;background:transparent;z-index:1;border:0;outline:0}
+  .case-card img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:3/4}
+  .cases-badge{display:block;position:absolute;left:50%;top:0;transform:translate(-50%,-50%);z-index:5;padding:16px 22px;font-weight:900;background:#000;color:#fff;border:3px solid #000;letter-spacing:.02em;box-shadow:0 10px 24px rgba(0,0,0,.24)}
+  .case-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:8px 0 6px}
+  .meta-chip{display:inline-flex;align-items:center;justify-content:center;padding:6px 12px;border-radius:999px;background:#fff;color:#0b0f16;border:2px solid #0b0f16;font-weight:900;letter-spacing:.02em}
+  .case-caption{max-width:880px;margin:6px auto 24px;text-align:center;color:#0b0f16}
+  .case-comment{font-size:16px;font-weight:800;margin:0 0 6px}
+  .case-info{font-size:13px;color:#1f2937;font-weight:700}
+  @media (max-width:980px){.case-track{--spv:2}}
+  @media (max-width:640px){.case-track{--spv:1}.case-comment{font-size:18px}}
+  .review-head{text-align:center;margin:16px 0 12px}
+  .review-badge{display:inline-block;padding:14px 22px;font-weight:900;background:#000;color:#fff;border:3px solid #000}
+  .reviews-swiper{position:relative;margin-top:14px}
+  .reviews-viewport{overflow:hidden}
+  .reviews-track{display:flex;gap:16px;will-change:transform;transition:transform .45s ease}
+  .review{flex:0 0 calc((100% - 32px)/3);min-height:200px;padding:20px;background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:18px;box-shadow:0 10px 22px rgba(0,0,0,.12);display:flex;gap:14px;align-items:flex-start}
+  @media (max-width:980px){.review{flex-basis:calc((100% - 16px)/2)}}
+  @media (max-width:640px){.review{flex-basis:100%}}
+  .review img{width:84px;height:84px;border-radius:16px;object-fit:cover}
+  .review .who{margin:0 0 6px;font-weight:900;color:#0b2239}
+  .review p{margin:0;line-height:1.5;color:#334155;font-size:16px}
+  .reviews-more{display:flex;justify-content:center;margin:36px 0 0}
+  .reviews-more__btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font-weight:900;text-decoration:none;border:2px solid #0b2239;background:#fff;color:#0b2239;box-shadow:0 8px 18px rgba(0,0,0,.08)}
+  .reviews-more__btn:hover{transform:translateY(-1px)}
+  .reviews-more__btn svg{width:18px;height:18px}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>내 GitHub 홈페이지</h1>
-    <p>첫 배포 성공! 🎉 이 문서를 수정해 내 소개, 포트폴리오, 블로그 링크 등을 추가해 보세요.</p>
-    <nav>
-      <a href="https://github.com/USERNAME">GitHub</a>
-      <a href="mailto:me@example.com">Email</a>
-    </nav>
-    <footer>© 2025 YOUR NAME</footer>
+<header class="nav">
+  <div class="brand">
+    <img class="brand__logoimg" src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/logo_on.png" alt="이룸 로고" loading="eager" decoding="async">
   </div>
+  <button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mainMenu" aria-label="메뉴 열기/닫기"><span></span></button>
+  <nav id="mainMenu" class="menu" aria-label="주요메뉴">
+    <a href="#strengths" class="nav-link">이룸의 강점</a>
+    <a href="#cases" class="nav-link">성공사례&후기</a>
+    <a href="#live" class="nav-link">실시간 현황</a>
+    <a href="#self" class="nav-link">셀프진단&변액계산기</a>
+    <a href="#last" class="nav-link">마지막 안내</a>
+  </nav>
+</header>
+
+<section class="hero" id="home" aria-label="메인">
+  <div class="slides" aria-hidden="true">
+    <div class="slide active" style="background-image:url('https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/main1.jpg')"></div>
+    <div class="slide" style="background-image:url('https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/main2.jpg')"></div>
+    <div class="slide" style="background-image:url('https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/main3.jpg')"></div>
+    <div class="slide" style="background-image:url('https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/main4.jpg')"></div>
+  </div>
+  <div class="hero__content" aria-live="polite">
+    <span class="sr-only">배경 이미지 위로 주요 안내가 표시됩니다.</span>
+    <div class="content-left">
+      <h1 class="hero__title" id="heroTitle">개인회생·파산 신청가능할까?</h1>
+      <p class="hero__desc" id="heroDesc">지금 바로 확인하세요.</p>
+      <ul id="heroMetrics" class="hero__metrics">
+        <li>실제 의뢰인수 2,567명</li>
+        <li>실제 탕감율 97%</li>
+      </ul>
+    </div>
+
+    <aside class="hero-check" id="hcheck" aria-label="셀프체크 빠른진단">
+      <div class="hc-head" aria-live="polite">
+        <span class="hc-stepbar" aria-hidden="true"><i style="width:0%"></i></span>
+        <span class="hc-no" id="hcNo">01.</span>
+        <span class="hc-cat" id="hcCat">대출유무</span>
+      </div>
+      <div class="hc-body" id="hcBody"></div>
+      <div class="hc-ctls">
+        <button class="hc-prev" id="hcPrev" type="button" disabled>이전</button>
+        <button class="hc-next" id="hcNext" type="button">다음</button>
+      </div>
+    </aside>
+    <button class="pill-btn pill-btn--gradient" id="goConsult">24h 무료상담 바로가기</button>
+  </div>
+</section>
+
+<section id="strengths" class="strengths" aria-label="이룸의 강점">
+  <div class="container">
+    <h2 class="section-title">이룸의 강점</h2>
+    <div class="section-accent"></div>
+    <p class="section-sub">전문 법무사가 직접관리하며, 신속, 정확한 진행!</p>
+    <div class="cards">
+      <article class="card">
+        <img class="card__img" src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/section2_card1.jpg" alt="부산·경남 무료상담 안내" loading="lazy" decoding="async">
+        <div><h3>부산경남 무료상담 진행</h3><p>부산·경남 지역 누구나<br>부담 없는 무료 상담 서비스</p></div>
+      </article>
+      <article class="card">
+        <img class="card__img" src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/section2_card2.png" alt="전문 변호사가 사건 직접 관리" loading="lazy" decoding="async">
+        <div><h3>도산전문변호사가 사건 직접 관리</h3><p>사건부터 해결까지<br>전문 변호사가 직접 책임</p></div>
+      </article>
+      <article class="card">
+        <img class="card__img" src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/section2_card3.jpg" alt="무방문 사건 진행" loading="lazy" decoding="async">
+        <div><h3>무방문 사건 진행 가능</h3><p>방문 없이 편리하게<br>온라인으로 사건 진행 OK</p></div>
+      </article>
+      <article class="card">
+        <img class="card__img" src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/section2_card4.png" alt="1:1 비밀상담" loading="lazy" decoding="async">
+        <div><h3>1:1 비밀상담</h3><p>비밀 상담으로<br>마음 편히 이야기</p></div>
+      </article>
+      <article class="card">
+        <img class="card__img" src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/section2_card5.jpg" alt="추심 독촉 방어" loading="lazy" decoding="async">
+        <div><h3>추심 독촉 즉시 방어!</h3><p>신속한 대응으로<br>즉시 막아드립니다</p></div>
+      </article>
+      <article class="card">
+        <img class="card__img" src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/section2_card6.jpg" alt="모든 채무 탕감 가능" loading="lazy" decoding="async">
+        <div><h3>모든 채무(도박, 주식 등) 탕감 가능</h3><p>도박·주식 등 모든 채무<br>탕감 가능성 열어드립니다</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="cases" class="cases" aria-label="성공사례와 후기">
+  <div class="container">
+    <h2 class="title">이룸법률사무소가 증명합니다!</h2>
+    <div class="accent"></div>
+    <p class="sub">거짓 없는 성공사례와 믿을 수 있는 실제 후기</p>
+
+    <div class="case-swiper" id="caseSwiper">
+      <div class="cases-badge" aria-hidden="true">성공사례</div>
+      <div class="case-viewport">
+        <div class="case-track" id="caseTrack"></div>
+      </div>
+    </div>
+
+    <div class="case-tags" id="caseTags" aria-live="polite"></div>
+    <div class="case-caption" id="caseCaption">
+      <div class="case-comment" id="caseComment"></div>
+      <div class="case-info" id="caseInfo"></div>
+    </div>
+
+    <div class="review-head"><span class="review-badge">후기</span></div>
+    <div class="reviews-swiper" id="revSwiper">
+      <div class="reviews-viewport">
+        <div class="reviews-track" id="reviewsTrack">
+          <article class="review">
+            <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/review1.jpg" alt="후기 1" loading="lazy" decoding="async">
+            <div><p class="who">박** / 30대</p><p>상담부터 끝까지 한결같이 친절했습니다. 덕분에 마음고생 끝!</p></div>
+          </article>
+          <article class="review">
+            <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/review2.jpg" alt="후기 2" loading="lazy" decoding="async">
+            <div><p class="who">김** / 50대</p><p>진행 내내 소통이 빨라서 안심할 수 있었어요.</p></div>
+          </article>
+          <article class="review">
+            <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/review3.jpg" alt="후기 3" loading="lazy" decoding="async">
+            <div><p class="who">이** / 20대</p><p>복잡한 부분도 쉽게 설명해 주셔서 이해가 잘 됐습니다.</p></div>
+          </article>
+          <article class="review">
+            <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/review4.jpg" alt="후기 4" loading="lazy" decoding="async">
+            <div><p class="who">최** / 40대</p><p>신속 정확, 믿고 맡길 수 있었습니다. 강추합니다.</p></div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-more">
+      <a class="reviews-more__btn" href="https://www.daangn.com" target="_blank" rel="noopener noreferrer">
+        후기 더보기
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+<section id="live" class="live" aria-label="실시간 사건 및 진행현황">
+  <div class="container">
+    <h2 class="live-title">실시간 사건 및 진행현황</h2>
+    <div class="live-accent"></div>
+    <div class="live-board">
+      <h3 class="live-head">카테고리 / 날짜 / 이름 / 결과</h3>
+      <div class="live-wrap" id="liveWrap" aria-live="polite">
+        <div class="live-list" id="liveList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .live{background:#f6f9fc;padding:80px 16px 120px;color:#0b2239}
+  .live .container{width:min(1100px,100%);margin:0 auto}
+  .live-title{font-size:48px;text-align:center;margin:0}
+  .live-accent{width:180px;height:8px;border-radius:999px;margin:14px auto 26px;background:linear-gradient(90deg,#36DA9C,#209FE9)}
+  .live-board{background:#fff;border:1px solid #e6edf5;border-radius:26px;box-shadow:0 18px 44px rgba(12,27,57,.08);padding:18px 10px}
+  .live-head{position:absolute;width:1px;height:1px;clip:rect(0 0 0 0);overflow:hidden;clip-path:inset(50%)}
+  .live-wrap{overflow:hidden;height:420px}
+  .live-list{will-change:transform}
+  .live-row{display:grid;grid-template-columns:120px 120px 120px 1fr;align-items:center;column-gap:18px;padding:18px 24px;border-bottom:1px solid #f1f5fa;color:#1f2937}
+  .live-row:last-child{border-bottom:none}
+  .tag{display:inline-block;min-width:96px;padding:8px 16px;border-radius:999px;color:#fff;font-weight:900;text-align:center;letter-spacing:.02em}
+  .tag--bk{background:linear-gradient(180deg,#38a5ff,#2286e6);box-shadow:0 6px 14px rgba(34,134,230,.25)}
+  .tag--rehab{background:linear-gradient(180deg,#22d39b,#10b981);box-shadow:0 6px 14px rgba(16,185,129,.25)}
+  .live-date{color:#334155;font-weight:600;letter-spacing:.02em}
+  .live-name{color:#111827;font-weight:700}
+  .live-result{color:#111827}
+  @media (max-width:980px){.live-row{grid-template-columns:110px 100px 100px 1fr;padding:16px 18px}}
+  @media (max-width:640px){
+    .live-wrap{height:360px}
+    .live-row{grid-template-columns:1fr 1fr;grid-template-rows:auto auto;row-gap:6px;column-gap:12px}
+    .live-row .tag{grid-column:1/2}
+    .live-row .live-date{grid-column:2/3;text-align:right}
+    .live-row .live-name{grid-column:1/2}
+    .live-row .live-result{grid-column:1/3}
+  }
+</style>
+
+<section id="self" class="s5" aria-label="셀프 자격확인 및 변제금 계산기">
+  <div class="container">
+    <h2 class="s5-title">개인회생 나도 가능할까?<br><span class="s5-badge">셀프 Check!</span></h2>
+    <div class="s5-tabs">
+      <button class="s5-tab s5-tab--on" id="tabCheck" type="button">셀프 자격확인</button>
+      <button class="s5-tab s5-tab--off" id="tabCalc" type="button">변제액계산기</button>
+    </div>
+
+    <div id="viewCheck" class="s5-card s5-wiz">
+      <div class="s5-step" data-step="1">
+        <div class="s5-wizgrid">
+          <div class="s5-illust">
+            <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/self1.png" alt="소득활동 일러스트" loading="lazy" decoding="async">
+          </div>
+          <div class="s5-q">
+            <h3>1. 현재 소득활동을 하고 있나요?</h3>
+            <div class="s5-choices">
+              <button class="s5-chip" data-name="income" data-value="none">소득 활동이 어려워요</button>
+              <button class="s5-chip" data-name="income" data-value="monthly">매달 소득이 있어요</button>
+              <button class="s5-chip" data-name="income" data-value="pension">연금을 받고 있어요</button>
+            </div>
+            <div class="s5-ctls"><button class="s5-navbtn" data-next>다음 단계</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s5-step hidden" data-step="2">
+        <div class="s5-wizgrid">
+          <div class="s5-illust">
+            <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/self2.png" alt="채무금액 입력 일러스트" loading="lazy" decoding="async">
+          </div>
+          <div class="s5-q">
+            <h3>2. 채무금액을 입력해주세요.</h3>
+            <div class="s5-choices">
+              <div class="s5-ipt-wrap unit-krw" style="max-width:360px">
+                <input id="debtInput" class="s5-ipt" type="text" inputmode="numeric" placeholder="예: 30,000,000" aria-label="채무금액">
+                <span class="unit">원</span>
+              </div>
+            </div>
+            <div class="s5-ctls"><button class="s5-navbtn" data-prev>이전 단계</button><button class="s5-navbtn" data-next>다음 단계</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s5-step hidden" data-step="3">
+        <div class="s5-wizgrid">
+          <div class="s5-illust s5-illust--icons" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/self3-1.png" alt="투자 아이콘" loading="lazy" decoding="async">
+            <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/self3-2.png" alt="카지노 칩 아이콘" loading="lazy" decoding="async">
+            <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/self3-3.png" alt="술잔 아이콘" loading="lazy" decoding="async">
+          </div>
+          <div class="s5-q s5-q--step3">
+            <h3>3. 채무발생 경위를 선택해주세요.(중복가능)</h3>
+            <div class="s5-choices s5-choices--step3">
+              <button class="s5-chip" data-name="causes" data-value="생활비">생활비</button>
+              <button class="s5-chip" data-name="causes" data-value="투자·도박">투자 · 도박</button>
+              <button class="s5-chip" data-name="causes" data-value="사기피해">사기피해</button>
+              <button class="s5-chip" data-name="causes" data-value="사업자금">사업자금</button>
+            </div>
+            <div class="s5-ctls">
+              <button class="s5-navbtn" data-prev>이전 단계</button>
+              <button class="s5-navbtn" data-next>다음 단계</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s5-step hidden" data-step="4">
+        <div class="s5-wizgrid">
+          <div class="s5-illust">
+            <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/self4.png" alt="보유 재산 선택 일러스트" loading="lazy" decoding="async">
+          </div>
+          <div class="s5-q">
+            <h3>4. 보유하고 있는 재산을 모두 선택해주세요.</h3>
+            <div class="s5-choices" style="grid-template-columns:1fr 1fr">
+              <button class="s5-chip" data-name="assets" data-value="예금 및 현금">예금 및 현금</button>
+              <button class="s5-chip" data-name="assets" data-value="차량">차량</button>
+              <button class="s5-chip" data-name="assets" data-value="부동산">부동산</button>
+              <button class="s5-chip" data-name="assets" data-value="그 외">그 외</button>
+              <button class="s5-chip" data-name="assets" data-value="보험금">보험금</button>
+            </div>
+            <div class="s5-ctls"><button class="s5-navbtn" data-prev>이전 단계</button><button class="s5-navbtn" data-next>다음 단계</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s5-step hidden" data-step="5">
+        <div class="s5-wizgrid">
+          <div class="s5-illust">
+            <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/self5.png" alt="혼인 여부 선택 일러스트" loading="lazy" decoding="async">
+          </div>
+          <div class="s5-q">
+            <h3>5. 현재 혼인중이신가요?</h3>
+            <div class="s5-choices" style="grid-template-columns:1fr 1fr">
+              <button class="s5-chip" data-name="marital" data-value="기혼">기혼</button>
+              <button class="s5-chip" data-name="marital" data-value="그 외">그 외</button>
+            </div>
+            <div class="s5-ctls"><button class="s5-navbtn" data-prev>이전 단계</button><button class="s5-navbtn" data-next>다음 단계</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s5-step hidden" data-step="6">
+        <div class="s5-result">
+          <div class="s5-resgrid">
+            <div class="s5-resleft">
+              <h3 style="font-size:34px;margin:0 0 8px">맞춤 확인 결과</h3>
+              <p>고객님의 데이터를 기반으로 분석한 결과입니다.<br>보다 정확하고 자세한 결과를 알고 싶다면<br>무료 상담신청을 이용해주세요</p>
+              <div class="s5-reslist">
+                <div class="s5-resrow"><strong>정기적인 소득발생</strong><span id="r-income" class="s5-pill">—</span></div>
+                <div class="s5-resrow"><strong>채무 천만원 이상 보유</strong><span id="r-debt" class="s5-pill">—</span></div>
+                <div class="s5-resrow"><strong>재산보다 많은 채무</strong><span id="r-balance" class="s5-pill">—</span></div>
+              </div>
+            </div>
+            <div class="s5-reshero">
+              <div id="resTitle" class="s5-restitle">
+                <img id="resIcon" class="s5-resicon hidden" src="" alt="">
+                <span id="resText">결과 확인</span>
+              </div>
+              <div class="s5-ctls" style="justify-content:center;margin-top:16px">
+                <button class="s5-navbtn" data-prev>이전 단계</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="viewCalc" class="s5-card s5-calc hidden">
+      <h3 style="font-size:34px;margin:0 0 8px">📟 변제금액계산기</h3>
+      <p class="s5-hint">채무·이자·기간 입력만으로 월 변제금, 총 이자, 변제율 한 번에 확인<br><small style="color:#6d8dbd">* 실제 금액은 상담 후 안내됩니다. / 계산결과는 참고용입니다.</small></p>
+      <div class="s5-grid2">
+        <div class="s5-fg"><label for="cDebt">채무 총액 (원) *</label><input id="cDebt" class="s5-ipt" inputmode="numeric" placeholder="예: 30,000,000"></div>
+        <div class="s5-fg"><label for="cIncome">월평균수입 (원)</label><input id="cIncome" class="s5-ipt" inputmode="numeric" placeholder="예: 2,500,000"></div>
+        <div class="s5-fg"><label for="cRate">연이자율 (%) *</label><input id="cRate" class="s5-ipt" inputmode="decimal" placeholder="예: 10"></div>
+        <div class="s5-fg"><label for="cLiving">월평균생계비 (원)</label><input id="cLiving" class="s5-ipt" inputmode="numeric" placeholder="예: 1,200,000"></div>
+        <div class="s5-fg"><label for="cMonths">변제기간 (개월) *</label><input id="cMonths" class="s5-ipt" inputmode="numeric" placeholder="예: 36"></div>
+      </div>
+      <div class="s5-cctls">
+        <button id="runCalc" class="s5-run">계산하기</button>
+        <button id="resetCalc" class="s5-reset" type="button">다시 계산</button>
+      </div>
+      <div id="out" class="s5-out hidden" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .s5{padding:68px 16px 100px;background:linear-gradient(135deg,#36DA9C,#209FE9);color:#0b1220}
+  .s5 .container{width:min(1100px,100%);margin:0 auto}
+  .s5-title{font-size:48px;text-align:center;margin:4px 0 10px;font-family:'GmarketSansBold',sans-serif;color:#000}
+  .s5-badge{display:inline-block;background:#fff07a;color:#000;font-weight:900;padding:8px 14px;border-radius:8px;transform:skewX(-4deg);box-shadow:0 8px 28px rgba(0,0,0,.08)}
+  .s5-tabs{display:flex;gap:10px;justify-content:center;margin:18px 0 26px}
+  .s5-tab{border:none;padding:10px 18px;border-radius:999px;font-weight:900;cursor:pointer}
+  .s5-tab--on{background:#000;color:#fff}
+  .s5-tab--off{background:#fff;color:#000;border:1px solid #000}
+  .s5-card{background:#fff;border:1px solid #e7eef7;border-radius:22px;box-shadow:0 18px 44px rgba(12,27,57,.12)}
+  .s5-wiz{position:relative;padding:30px 20px 110px}
+  .s5-wizgrid{display:grid;grid-template-columns:minmax(300px,380px) 1fr;align-items:center;gap:16px;min-height:440px}
+  .s5-illust{display:flex;align-items:center;justify-content:center}
+  .s5-illust img{width:76%;height:auto;object-fit:contain;filter:drop-shadow(0 14px 32px rgba(0,0,0,.12))}
+  .s5-illust--icons{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:18px;justify-items:center;align-items:center}
+  .s5-illust--icons img{width:clamp(120px,16vw,180px);height:auto;filter:drop-shadow(0 14px 32px rgba(0,0,0,.12))}
+  .s5-illust--icons>*:nth-child(3){grid-column:1/-1;justify-self:center}
+  .s5-q h3{margin:0 0 18px;letter-spacing:-.2px;font-size:34px}
+  .s5-choices{display:grid;gap:12px;width:min(540px,100%)}
+  .s5-choices--step3{grid-template-columns:1fr 1fr;gap:12px;width:min(520px,100%)}
+  .s5-chip{display:flex;align-items:center;justify-content:center;padding:14px 18px;border-radius:12px;background:#fff;border:2px solid #9ec8ff;color:#111;font-weight:800;cursor:pointer;transition:.15s ease;box-shadow:0 2px 0 rgba(43,140,255,.15) inset}
+  .s5-chip:hover{transform:translateY(-1px)}
+  .s5-chip.is-on{background:linear-gradient(90deg,#e8f3ff,#f5fbff);border-color:#2b8cff;box-shadow:0 0 0 3px rgba(43,140,255,.12)}
+  .s5-ctls{position:absolute;left:50%;transform:translateX(-50%);bottom:20px;display:flex;gap:10px;justify-content:center}
+  .s5-navbtn{border:2px solid #9ec8ff;background:#fff;color:#1d4ed8;font-weight:900;padding:10px 18px;border-radius:999px;cursor:pointer;min-width:120px;transition:background-color .18s ease,color .18s ease,transform .06s ease}
+  .s5-navbtn:active{transform:translateY(1px)}
+  .s5-navbtn.is-active,.s5-navbtn:focus-visible{background:#1FACFF;color:#fff;border-color:#1FACFF}
+  .s5-result{padding:26px clamp(16px,4vw,38px);min-height:420px}
+  .s5-resgrid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:18px}
+  .s5-resleft p{color:#374151;line-height:1.45;margin:8px 0 18px;font-size:16px}
+  .s5-reslist{display:grid;gap:16px;max-width:520px}
+  .s5-resrow{display:flex;align-items:center;gap:12px;justify-content:space-between}
+  .s5-resrow strong{font-weight:900}
+  .s5-pill{display:inline-flex;align-items:center;justify-content:center;min-width:92px;height:34px;padding:0 10px;border-radius:999px;font-weight:900}
+  .s5-pill--ok{background:linear-gradient(90deg,#31d3a0,#5aa4ff);color:#fff}
+  .s5-pill--no{background:#e6e7ea;color:#111}
+  .s5-reshero{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:360px;text-align:center}
+  .s5-restitle{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+  .s5-resicon{display:block;width:clamp(72px,10vw,120px);height:auto;margin:0 auto}
+  #resText{font-family:'GmarketSansBold',sans-serif;font-weight:900;font-size:clamp(28px,3.8vw,52px);line-height:1.1;letter-spacing:-.3px;color:#0b0f16}
+  .s5-calc{padding:26px clamp(16px,3vw,28px)}
+  .s5-hint{color:#5b89c7;margin:8px 0 18px;line-height:1.45;font-size:16px}
+  .s5-grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:920px}
+  .s5-fg{display:flex;flex-direction:column;gap:6px}
+  .s5-fg label{font-weight:900}
+  .s5-ipt{border:2px solid #9ec8ff;border-radius:14px;padding:12px 14px;outline:none;font-size:16px;width:100%}
+  .s5-ipt-wrap{position:relative;max-width:540px}
+  .s5-ipt-wrap.unit-krw .s5-ipt{padding-right:44px}
+  .s5-ipt-wrap.unit-krw .unit{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#284b8a;font-weight:900;pointer-events:none}
+  .s5-cctls{display:flex;gap:12px;margin:16px 0}
+  .s5-run{border:none;background:linear-gradient(135deg,#2ad7ac,#1aa4ff);color:#fff;font-weight:900;border-radius:12px;padding:12px 18px;cursor:pointer;box-shadow:0 12px 26px rgba(0,0,0,.16)}
+  .s5-run:hover{transform:translateY(-1px)}
+  .s5-reset{border:none;background:#d9d9d9;color:#000;font-weight:900;border-radius:12px;padding:12px 18px;cursor:pointer}
+  .hidden{display:none!important}
+  @media (max-width:980px){
+    .s5-ctls{position:static;transform:none;margin-top:16px}
+    .s5-wiz{padding:24px 16px 20px}
+    .s5-wizgrid{min-height:unset;grid-template-columns:1fr;gap:16px}
+    .s5-resgrid{grid-template-columns:1fr;gap:16px}
+    .s5-reshero{min-height:0}
+  }
+  @media (max-width:640px){
+    .s5{padding:56px 12px 92px}
+    .s5-title{font-size:32px}
+    .s5-q h3{font-size:20px}
+    .s5-choices{width:100%;gap:10px}
+    .s5-chip{width:100%;max-width:none;padding:12px 14px;font-size:14px}
+    .s5-choices--step3{grid-template-columns:1fr 1fr}
+  }
+</style>
+
+<section id="last" class="cta-final" aria-label="상담 안내">
+  <div class="cta-bg" style="background-image:url('https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=1920&auto=format&fit=crop')" aria-hidden="true"></div>
+  <div class="cta-dim" aria-hidden="true"></div>
+  <div class="cta-box">
+    <h2 class="cta-title" style="margin-bottom: 80px;">포기하지마세요.<br>이룸법률사무소에서 당신의 새 시작을 돕겠습니다.</h2>
+    <div class="cta-actions">
+      <button class="cta-pill cta-primary" id="openConsult">24h 무료상담 바로가기</button>
+      <a class="cta-pill cta-kakao" href="https://open.kakao.com/o/YOUR_OPENCHAT_URL" target="_blank" rel="noopener noreferrer">kakao상담</a>
+    </div>
+  </div>
+</section>
+
+<div class="sticky-bar" role="complementary" aria-label="빠른 상담">
+  <div class="inner">
+    <div class="call-inline">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%23032017' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12 .81 .3 1.6 .54 2.36a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.72-1.5a2 2 0 0 1 2.11-.45c.76 .24 1.55 .42 2.36 .54A2 2 0 0 1 22 16.92z'/%3E%3C/svg%3E" alt="전화 아이콘">
+      <span class="label blink">24h 무료상담</span>
+      <span class="num">1533-0560</span>
+    </div>
+    <span class="sep" aria-hidden="true">|</span>
+    <input id="phoneInput" class="input-underline" type="tel" inputmode="tel" placeholder="연락처를 입력해주세요" aria-label="연락처">
+    <label class="agree"><input type="checkbox" id="agreeChk"><span>개인정보 수집에 동의합니다.</span><button id="openTerms" class="link" type="button" onclick="window.open('/terms.html','_blank','noopener')">[약관보기]</button></label>
+    <button id="submitConsult" class="btn">상담신청</button>
+    <a id="kakaoBtn" class="btn btn--kakao" href="https://open.kakao.com/o/YOUR_OPENCHAT_URL" target="_blank" rel="noopener noreferrer">kakao상담</a>
+  </div>
+</div>
+
+<style>
+  .cta-final{position:relative;min-height:calc(100dvh - var(--sticky-h));display:grid;place-items:center;color:#fff;background:#0b0f16}
+  .cta-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+  .cta-dim{position:absolute;inset:0;background:rgba(0,0,0,.62)}
+  .cta-box{position:relative;z-index:1;text-align:center;width:min(1100px,92%);padding:0 16px calc(var(--sticky-h) + env(safe-area-inset-bottom,0px) + 8px)}
+  .cta-title{font-size:clamp(28px,3.8vw,64px);line-height:1.25;margin:0 0 18px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.25);font-weight:900;letter-spacing:-.3px}
+  .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+  .cta-pill{display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;border-radius:999px;padding:12px 20px;font-weight:900;font-size:16px}
+  .cta-primary{background:linear-gradient(135deg,#2ad7ac,#1aa4ff);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .cta-kakao{background:#FEE500;color:#111}
+
+  .sticky-bar{position:fixed;inset:auto 0 0 0;z-index:60;min-height:var(--sticky-h);padding:8px 0 calc(env(safe-area-inset-bottom,0px) + 8px);background:linear-gradient(90deg,#6DE6BB 0%,#B7EE9B 45%,#FDE05E 100%);box-shadow:0 -8px 20px rgba(0,0,0,.25);border-top:1px solid rgba(0,0,0,.08)}
+  .sticky-bar .inner{width:min(1180px,100%);margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding-inline:12px}
+  .call-inline{display:flex;align-items:center;gap:10px;color:#032017;font-weight:900;background:transparent;padding:0}
+  .call-inline img{width:28px;height:28px;object-fit:contain}
+  .call-inline .num{font-size:18px}
+  .blink{display:inline-block;animation:blink 1s linear infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  .sep{display:inline-block;width:2px;height:24px;background:#000;margin:0 8px;vertical-align:middle;font-size:0}
+  .input-underline{width:220px;max-width:36vw;padding:8px 2px;border:none;border-bottom:2px solid rgba(0,0,0,.6);background:transparent;color:#000;caret-color:#000;outline:none}
+  .input-underline::placeholder{color:#000;opacity:.55}
+  .agree{display:flex;align-items:center;gap:8px;color:#032017;font-size:14px;flex-wrap:wrap}
+  .agree .link{background:transparent;border:none;padding:0;color:#0b0b0b;text-decoration:underline;cursor:pointer}
+
+  .btn{cursor:pointer;border:none;border-radius:14px;padding:10px 14px;font-weight:800;white-space:nowrap}
+  #submitConsult{background:#0B2239;color:#E9FAFF;border:2px solid rgba(173,229,255,.9)}
+  .btn--kakao{background:#FEE500;color:#000}
+  .site-footer{background:#0b0f16;color:#cfd6e6;padding:28px 16px 36px;border-top:1px solid rgba(255,255,255,.08)}
+  .site-footer .inner{width:min(1180px,100%);margin:0 0 0 16px;display:grid;grid-template-columns:1fr;gap:16px;align-items:flex-start}
+  .site-footer .brand{display:flex;align-items:center;gap:10px}
+  .site-footer .brand img{height:clamp(40px,6vw,64px);width:auto}
+  .site-footer .addr{font-size:13px;line-height:1.7;opacity:.95;white-space:pre-line}
+  .site-footer .copy{grid-column:1/-1;font-size:12px;opacity:.75;margin-top:8px}
+</style>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="inner">
+    <div class="brand">
+      <img src="https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/logo_on.png" alt="이룸 로고" loading="lazy" decoding="async">
+    </div>
+    <div class="addr">
+대표 | 장혜승
+사업자등록번호 | 306-12-67673
+ADD | 부산광역시 연제구 법원남로15번길 9, 3층(거제동, 덕원빌딩)
+TEL | 1533-0560 / FAX | 051-714-0168
+E-MAIL | ipa@withlp.com
+    </div>
+    <div class="copy">Copyright 2025 이룸 All rights reserved.</div>
+  </div>
+</footer>
+
+<noscript>
+  <div style="background:#111;color:#fff;padding:12px;text-align:center">자바스크립트가 비활성화되어 자동 슬라이드 및 계산 기능이 제한됩니다.</div>
+</noscript>
+
+<script>
+const qs=(s,p=document)=>p.querySelector(s);const qsa=(s,p=document)=>[...p.querySelectorAll(s)];
+(()=>{const btn=qs('#menuToggle');const menu=qs('#mainMenu');if(!btn||!menu)return;btn.addEventListener('click',()=>{const on=menu.classList.toggle('on');btn.setAttribute('aria-expanded',on);document.body.classList.toggle('noscroll',on)});})();
+(()=>{const slides=qsa('.slide');let i=0;const titles=['개인회생·파산 신청가능할까?','어두운 현실 속 한줄기','빛이 되겠습니다.','개인회생, 파산은\n 도산전문변호사에게','포기하지 마세요 이룸법률사무소가'];const descs=['지금 바로 확인하세요.','지금 바로 무료 상담으로','새로운 시작을 준비하세요.','빠르고 정확한 진행으로 결과를 만듭니다.','무료 상담으로 첫걸음을 함께합니다.'];const titleEl=qs('#heroTitle');const descEl=qs('#heroDesc');const metEl=qs('#heroMetrics');function apply(idx){if(titleEl)titleEl.textContent=titles[idx]||titles[0];if(descEl)descEl.textContent=descs[idx]||descs[0];if(metEl){if(idx===0){metEl.classList.remove('hidden')}else metEl.classList.add('hidden')}}apply(0);if(slides.length>1){setInterval(()=>{slides[i]?.classList.remove('active');i=(i+1)%slides.length;slides[i]?.classList.add('active');apply(i)},5200)}})();
+qs('#goConsult')?.addEventListener('click',()=>qs('#last')?.scrollIntoView({behavior:'smooth'}));
+qs('#openConsult')?.addEventListener('click',()=>qs('#last')?.scrollIntoView({behavior:'smooth'}));
+(()=>{const wrap=qs('#revSwiper');const viewport=wrap?.querySelector('.reviews-viewport');const track=qs('#reviewsTrack');if(!wrap||!track||!viewport)return;let i=0,timer=null;const spv=()=>window.matchMedia('(max-width:640px)').matches?1:window.matchMedia('(max-width:980px)').matches?2:3;const gapPx=()=>parseFloat(getComputedStyle(track).gap||'0');function cardWidth(){const first=track.querySelector('.review');let w=first?.offsetWidth||first?.getBoundingClientRect().width||0;if(w)return w;const p=spv(),g=gapPx(),vw=viewport.clientWidth||0;return vw?(vw-g*(p-1))/p:0}function move(n){const per=spv();const total=track.children.length;const lastStart=Math.max(0,total-per);i=n;if(i>lastStart)i=0;if(i<0)i=lastStart;const w=cardWidth();if(!w){requestAnimationFrame(()=>move(i));return}const x=i*(w+gapPx());track.style.transform=`translateX(-${x}px)`}function play(){stop();timer=setInterval(()=>move(i+1),4200)}function stop(){if(timer)clearInterval(timer);timer=null}function imagesLoaded(el){const imgs=[...el.querySelectorAll('img')].filter(img=>!img.complete);if(!imgs.length)return Promise.resolve();return Promise.all(imgs.map(img=>new Promise(res=>{img.addEventListener('load',res,{once:true});img.addEventListener('error',res,{once:true})})))}function init(){move(0);play()}imagesLoaded(track).then(init);window.addEventListener('load',()=>!timer&&init());window.addEventListener('resize',()=>move(i));wrap.addEventListener('mouseenter',stop);wrap.addEventListener('mouseleave',()=>!timer&&play());document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else if(!timer)play()})})();
+const caseData=[{img:'https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/success1.jpg',content:'어렵지 않은 설명과 빠른 진행 덕분에 무사히 인가 결정을 받을 수 있었습니다. 정말 감사드립니다.',age:'20대',name:'서**',result:'80% 탕감'},{img:'https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/success2.jpg',content:'단기간에 결과를 받아 생활이 안정됐습니다. 진심으로 감사드립니다.',age:'40대',name:'이**',result:'전액 면책'},{img:'https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/success3.jpg',content:'세심한 배려와 빠른 진행 덕에 무사히 인가되었습니다.',age:'50대',name:'하**',result:'72% 탕감'},{img:'https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/success4.jpg',content:'쉽고 명확한 설명으로 절차를 이해할 수 있었고 결과도 좋았습니다.',age:'30대',name:'김**',result:'전액 탕감'}];
+(()=>{const wrap=document.getElementById('caseSwiper');const viewport=wrap?.querySelector('.case-viewport');const track=document.getElementById('caseTrack');const tagsEl=document.getElementById('caseTags');const cmtEl=document.getElementById('caseComment');const infoEl=document.getElementById('caseInfo');if(!wrap||!track||!viewport)return;const data=caseData.slice();let idx=0,timer=null,busy=false,spv=3;let dragging=false,startX=0,currX=0,baseX=0;const gap=()=>parseFloat(getComputedStyle(track).gap||'0');function setSPV(){spv=window.matchMedia('(max-width:640px)').matches?1:window.matchMedia('(max-width:980px)').matches?2:3;track.style.setProperty('--spv',spv)}const slideItem=d=>`<div class="case-slide"><div class="case-card"><img src="${d.img}" alt="성공사례 이미지"></div></div>`;function build(){setSPV();const clones=data.slice(0,spv);track.innerHTML=data.map(slideItem).join('')+clones.map(slideItem).join('');idx=0;setTranslate(0,false);updateMeta()}function slideWidth(){const el=track.querySelector('.case-slide');return el?el.getBoundingClientRect().width:0}function setTranslate(i,withTransition=true){const w=slideWidth();const x=-(w+gap())*i;if(!withTransition)track.style.transition='none';track.style.transform=`translateX(${x}px)`;if(!withTransition)requestAnimationFrame(()=>track.style.transition='transform .55s ease')}function step(n=idx+1){if(busy)return;busy=true;idx=n;setTranslate(idx,true);track.addEventListener('transitionend',function onEnd(){if(idx>=data.length){track.style.transition='none';idx=0;setTranslate(idx,false)}busy=false;track.removeEventListener('transitionend',onEnd);updateMeta()},{once:true})}function play(){stop();timer=setInterval(()=>step(),3200)}function stop(){if(timer){clearInterval(timer);timer=null}}function updateMeta(){const d=data[idx%data.length]||data[0];if(!d)return;tagsEl.innerHTML=[d.age,d.name,d.result].map(t=>`<span class="meta-chip">${t}</span>`).join('');cmtEl.textContent=`“${d.content}”`;infoEl.textContent=''}function onPointerDown(e){if(busy)return;dragging=true;stop();startX=(e.touches?e.touches[0].clientX:e.clientX);const w=slideWidth();baseX=-((w+gap())*idx);track.style.transition='none'}function onPointerMove(e){if(!dragging)return;currX=(e.touches?e.touches[0].clientX:e.clientX);const delta=currX-startX;track.style.transform=`translateX(${baseX+delta}px)`}function onPointerUp(){if(!dragging)return;dragging=false;const w=slideWidth();if(!w){play();return}const delta=(currX||startX)-startX;const threshold=Math.min(80,w*0.25);if(delta>threshold)idx=Math.max(0,idx-1);if(delta<-threshold)idx=idx+1;track.style.transition='transform .45s ease';setTranslate(idx,true);track.addEventListener('transitionend',function onEnd(){if(idx>=data.length){track.style.transition='none';idx=0;setTranslate(idx,false)}updateMeta();track.removeEventListener('transitionend',onEnd);play()},{once:true})}function imagesLoaded(el){const imgs=[...el.querySelectorAll('img')].filter(img=>!img.complete);if(!imgs.length)return Promise.resolve();return Promise.all(imgs.map(img=>new Promise(res=>{img.addEventListener('load',res,{once:true});img.addEventListener('error',res,{once:true})})))}function init(){build();imagesLoaded(track).then(()=>{setTranslate(0,false);play()});setTimeout(()=>{if(!timer)play()},1200)}viewport.addEventListener('touchstart',onPointerDown,{passive:true});viewport.addEventListener('touchmove',onPointerMove,{passive:true});viewport.addEventListener('touchend',onPointerUp);viewport.addEventListener('mousedown',onPointerDown);window.addEventListener('mousemove',onPointerMove);window.addEventListener('mouseup',onPointerUp);wrap.addEventListener('mouseenter',stop);wrap.addEventListener('mouseleave',()=>!timer&&play());window.addEventListener('resize',()=>{const prev=spv;setSPV();if(spv!==prev)build();setTranslate(idx,false)});window.addEventListener('orientationchange',()=>{setTimeout(()=>{build();play()},300)});init()})();
+(()=>{const wrap=qs('#liveWrap');const list=qs('#liveList');if(!wrap||!list)return;const mask=full=>full&&full.length>0?full[0]+'XX':'—';const data=[{type:'개인파산',date:'25.07.16',name:'하진우',result:'4,800만원 부채 전부 탕감'},{type:'개인회생',date:'25.07.18',name:'김선아',result:'월 40만원 36개월 변제 1,100만원 및 이자 탕감'},{type:'개인회생',date:'25.07.18',name:'김민수',result:'월 238만원 36개월 변제 9,400만원 및 이자 탕감'},{type:'개인회생',date:'25.07.18',name:'김도윤',result:'4,800만원 부채 전부 탕감'},{type:'개인파산',date:'25.07.16',name:'하예린',result:'월 40만원 36개월 변제 1,100만원 및 이자 탕감'},{type:'개인파산',date:'25.07.16',name:'하서준',result:'월 238만원 36개월 변제 9,400만원 및 이자 탕감'},{type:'개인회생',date:'25.07.18',name:'김지현',result:'4,800만원 부채 전부 탕감'}];const row=d=>`<div class="live-row"><div class="tag ${d.type==='개인파산'?'tag--bk':'tag--rehab'}">${d.type}</div><div class="live-date">${d.date}</div><div class="live-name">${mask(d.name)}</div><div class="live-result">${d.result}</div></div>`;list.innerHTML=data.map(row).join('')+data.map(row).join('');let y=0,running=true;wrap.addEventListener('mouseenter',()=>running=false);wrap.addEventListener('mouseleave',()=>running=true);function loop(){if(running){y-=0.7;list.style.transform=`translateY(${y}px)`;const half=list.scrollHeight/2;if(Math.abs(y)>=half){y=0;list.style.transform='translateY(0)'}}requestAnimationFrame(loop)}requestAnimationFrame(loop)})();
+(()=>{const tabCheck=qs('#tabCheck'),tabCalc=qs('#tabCalc');const viewCheck=qs('#viewCheck'),viewCalc=qs('#viewCalc');if(!tabCheck||!tabCalc||!viewCheck||!viewCalc)return;tabCheck.addEventListener('click',()=>{tabCheck.classList.add('s5-tab--on');tabCheck.classList.remove('s5-tab--off');tabCalc.classList.remove('s5-tab--on');tabCalc.classList.add('s5-tab--off');viewCheck.classList.remove('hidden');viewCalc.classList.add('hidden')});tabCalc.addEventListener('click',()=>{tabCalc.classList.add('s5-tab--on');tabCalc.classList.remove('s5-tab--off');tabCheck.classList.remove('s5-tab--on');tabCheck.classList.add('s5-tab--off');viewCalc.classList.remove('hidden');viewCheck.classList.add('hidden')})})();
+(()=>{const steps=[...document.querySelectorAll('#viewCheck .s5-step')];if(!steps.length)return;const s5state={step:1,income:null,debt:0,causes:new Set(),assets:new Set(),marital:null};const ASSET_VAL={'예금 및 현금':5000000,'차량':10000000,'부동산':300000000,'그 외':5000000,'보험금':5000000};const toNumber=v=>Number(String(v||'').replace(/[^\d.]/g,''));const fmt=n=>isNaN(n)?'':n.toLocaleString();function s5go(n){s5state.step=Math.max(1,Math.min(6,n));steps.forEach(s=>s.classList.toggle('hidden',Number(s.dataset.step)!==s5state.step));if(s5state.step===6)renderResult();document.getElementById('viewCheck')?.scrollIntoView({behavior:'smooth',block:'start'})}document.querySelectorAll('#viewCheck .s5-chip').forEach(btn=>{btn.addEventListener('click',()=>{const name=btn.dataset.name,val=btn.dataset.value;if(name==='income'||name==='marital'){document.querySelectorAll(`#viewCheck .s5-chip[data-name="${name}"]`).forEach(b=>b.classList.remove('is-on'));btn.classList.add('is-on');s5state[name]=val}else{btn.classList.toggle('is-on');if(btn.classList.contains('is-on'))s5state[name].add(val);else s5state[name].delete(val)}})});const debtInput=document.getElementById('debtInput');debtInput?.addEventListener('input',e=>{const raw=toNumber(e.target.value);s5state.debt=raw;e.target.value=fmt(raw)});document.getElementById('viewCheck')?.addEventListener('click',e=>{const q=e.target.closest('[data-next],[data-prev]');if(!q)return;q.classList.add('is-active');setTimeout(()=>q.classList.remove('is-active'),220);if(q.hasAttribute('data-prev'))return s5go(s5state.step-1);if(s5state.step===1&&!s5state.income)return alert('선택해주세요.');if(s5state.step===2&&!s5state.debt)return alert('채무금액을 입력해주세요.');if(s5state.step===5&&!s5state.marital)return alert('선택해주세요.');s5go(s5state.step+1)});function pill(el,ok){el.className='s5-pill '+(ok?'s5-pill--ok':'s5-pill--no');el.textContent=ok?'충족':'불충족'}function renderResult(){const incomeRegular=(s5state.income==='monthly'||s5state.income==='pension');const enoughDebt=s5state.debt>=10000000;const assetSum=[...s5state.assets].reduce((s,a)=>s+(ASSET_VAL[a]||0),0);const debtMore=s5state.debt>assetSum;pill(document.getElementById('r-income'),incomeRegular);pill(document.getElementById('r-debt'),enoughDebt);pill(document.getElementById('r-balance'),debtMore);let title='조건 재확인 필요';let icon='';if(enoughDebt){if(incomeRegular){if(debtMore){title='개인 회생 신청 가능';icon='https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/self6-2.png'}else{title='개인 회생 검토 필요(재산>채무)'}}else{title='개인 파산 신청 가능';icon='https://raw.githubusercontent.com/Lamanujan/Law-Firm/main/images/self6-1.png'}}const resText=qs('#resText');const resIcon=qs('#resIcon');if(resText)resText.textContent=title;if(resIcon){if(icon){resIcon.src=icon;resIcon.classList.remove('hidden');resIcon.setAttribute('aria-hidden','true')}else{resIcon.classList.add('hidden');resIcon.removeAttribute('src')}}}})();
+(()=>{const readNum=id=>Number(String(document.getElementById(id)?.value||'').replace(/[^\d.]/g,''));const setVal=(id,v)=>{const el=document.getElementById(id);if(!el)return;el.value=v?Number(v).toLocaleString():''};['cDebt','cIncome','cLiving'].forEach(id=>{const el=document.getElementById(id);el?.addEventListener('input',e=>{const v=Number(String(e.target.value).replace(/[^\d.]/g,''));e.target.value=isNaN(v)?'':v.toLocaleString()})});const run=qs('#runCalc');if(!run)return;run.addEventListener('click',()=>{const P=readNum('cDebt'),mIncome=readNum('cIncome'),mLiving=readNum('cLiving');const r=Number(document.getElementById('cRate').value)/100/12;const n=Number(document.getElementById('cMonths').value);if(!P||(!r&&r!==0)||!n){alert('필수 항목(*)을 입력해주세요.');return}const pmt=r>0?P*(r)/(1-Math.pow(1+r,-n)):P/n;const avail=Math.max(0,(mIncome||0)-(mLiving||0));const monthly=Math.min(pmt,avail||pmt);const totalPay=monthly*n;const totalInterest=Math.max(0,totalPay-P);const ratio=mIncome?(monthly/mIncome*100):null;const out=document.getElementById('out');out.innerHTML=`<div><strong>월 변제금</strong> : <b>${Math.round(monthly).toLocaleString()}</b> 원</div><div><strong>총 상환액</strong> : ${Math.round(totalPay).toLocaleString()} 원</div><div><strong>총 이자</strong> : ${Math.round(totalInterest).toLocaleString()} 원</div>${ratio!==null?`<div><strong>소득 대비 변제율</strong> : ${ratio.toFixed(1)}%</div>`:''}<div style="margin-top:8px;color:#6b7280;font-size:14px">※ 실제 심사 및 기관 기준에 따라 달라질 수 있습니다.</div>`;out.classList.remove('hidden')});const reset=qs('#resetCalc');reset?.addEventListener('click',()=>{['cDebt','cIncome','cLiving','cRate','cMonths'].forEach(id=>setVal(id,''));const out=document.getElementById('out');out?.classList.add('hidden');if(out)out.innerHTML=''})})();
+(()=>{const box=qs('#hcheck');if(!box)return;const body=qs('#hcBody',box);const nextBtn=qs('#hcNext',box);const prevBtn=qs('#hcPrev',box);const noEl=qs('#hcNo',box);const catEl=qs('#hcCat',box);const bar=qs('.hc-stepbar i',box);const steps=[{cat:'대출유무',q:'최근 3개월 이내에 발생한 대출이 있나요?',type:'opt',opts:['3개월 이내 대출 있음','3개월 이내 대출 없음']},{cat:'부채규모',q:'부채 총액이 어느 구간인가요?',type:'opt',opts:['1천만원 미만','1천~3천만원','3천~5천만원','5천만원 이상']},{cat:'연체여부',q:'최근 3개월 내 연체(미납)가 있었나요?',type:'opt',opts:['연체 있음','연체 없음']},{cat:'연락처',q:'결과 안내를 위해 연락처를 남겨주세요',type:'form'}];const state={idx:0,a1:null,a2:null,a3:null,name:'',tel:'',agree:false};const draw=()=>{const s=steps[state.idx];noEl.textContent=String(state.idx+1).padStart(2,'0')+'.';catEl.textContent=s.cat;bar.style.width=((state.idx+1)/steps.length*100)+'%';if(s.type==='opt'){body.innerHTML=`<p class="hc-q">${s.q}</p><div class="hc-list">${s.opts.map((t,i)=>`<button type="button" class="hc-row ${getAns()==i?'is-on':''}" data-i="${i}"><span class="txt">${t}</span><span class="dot" aria-hidden="true"></span></button>`).join('')}</div>`;body.querySelectorAll('.hc-row').forEach(btn=>{btn.addEventListener('click',()=>{body.querySelectorAll('.hc-row').forEach(b=>b.classList.remove('is-on'));btn.classList.add('is-on');setAns(Number(btn.dataset.i));refreshNav()})})}else{body.innerHTML=`<p class="hc-q">${s.q}</p><p class="hc-hint">* 성함과 연락처를 남겨주시면 3분 내로 연락드려 결과를 안내해드립니다.</p><div class="hc-form"><input class="hc-input" id="hcName" placeholder="성함" value="${state.name||''}"><input class="hc-input" id="hcTel" placeholder="휴대전화번호 (- 없이)" inputmode="tel" value="${state.tel||''}"><label class="hc-agree"><input type="checkbox" id="hcAgree" ${state.agree?'checked':''}> 개인정보 수집·이용에 동의합니다.</label></div>`;qs('#hcName')?.addEventListener('input',e=>state.name=e.target.value.trim());qs('#hcTel')?.addEventListener('input',e=>state.tel=e.target.value.replace(/[^\d]/g,''));qs('#hcAgree')?.addEventListener('change',e=>state.agree=e.target.checked)}refreshNav()};function getAns(){return state.idx===0?state.a1:state.idx===1?state.a2:state.idx===2?state.a3:null}function setAns(v){if(state.idx===0)state.a1=v;if(state.idx===1)state.a2=v;if(state.idx===2)state.a3=v}function refreshNav(){prevBtn.disabled=state.idx===0;if(state.idx<=2){nextBtn.textContent=(getAns()==null)?'다음':'다음';nextBtn.disabled=(getAns()==null)}else{nextBtn.textContent='무료 결과받기';nextBtn.disabled=false}}prevBtn.addEventListener('click',()=>{if(state.idx>0){state.idx--;draw()}});nextBtn.addEventListener('click',()=>{if(state.idx<steps.length-1){state.idx++;draw()}else{if(!state.name){alert('성함을 입력해주세요.');return}if(!state.tel||state.tel.length<9){alert('연락처를 정확히 입력해주세요.');return}if(!state.agree){alert('개인정보 수집에 동의해 주세요.');return}alert('접수 완료! 빠르게 연락드리겠습니다.')}});draw()})();
+qs('#submitConsult')?.addEventListener('click',()=>{const tel=qs('#phoneInput')?.value.trim();const ok=qs('#agreeChk')?.checked;if(!tel)return alert('연락처를 입력해주세요.');if(!ok)return alert('개인정보 수집에 동의해 주세요.');alert('상담 접수 완료! 빠르게 연락드리겠습니다.')});
+</script>
+
+<style>
+:root{--go-x:clamp(16px,8vw,260px);--go-y:78svh}
+#goConsult{position:absolute;left:var(--go-x);top:var(--go-y);transform:translateY(-50%);bottom:auto!important;z-index:10}
+@media (max-width:1024px){
+  #goConsult{top:auto;transform:none;left:16px;bottom:calc(var(--sticky-h) - 100px)!important}
+}
+.hero__title,.hero__desc{white-space:pre-line}
+</style>
+
 </body>
 </html>
